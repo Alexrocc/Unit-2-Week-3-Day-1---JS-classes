@@ -26,6 +26,7 @@ const petArray = [];
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let petsName = document.getElementById("pet-name").value;
+  console.log(petsName);
   let ownersName = document.getElementById("owner-name").value;
   let petSpecies = document.getElementById("species").value;
   let petBreed = document.getElementById("breed").value;
@@ -43,11 +44,11 @@ form.addEventListener("submit", (e) => {
   }
 
   const newPet = new Pet(petsName, ownersName, petSpecies, petBreed);
-  console.log(newPet);
 
   petArray.push(newPet);
 
-  console.log(petArray);
+  form.reset(); //Per qualche motivo la riassegnazione di .value a "" non ha avuto effetto
+
   if (petArray.length > 1) {
     console.log(Pet.hasSameOwner(petArray[0], petArray[1]));
   }
