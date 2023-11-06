@@ -23,6 +23,7 @@ const User2 = new User("Luigi", "Verdi", 27, "Roma");
 User.ageCompare(User1, User2);
 
 const form = document.getElementById("pet-form");
+const petUl = document.getElementById("pet-list");
 
 const petArray = [];
 
@@ -50,6 +51,9 @@ form.addEventListener("submit", (e) => {
 
   petArray.push(newPet);
 
+  const newLi = document.createElement("li");
+  newLi.innerText = `${newPet.petName}, ${newPet.ownerName}, ${newPet.species}, ${newPet.breed}`;
+  petUl.appendChild(newLi);
   form.reset(); //Per qualche motivo la riassegnazione di .value a "" non ha avuto effetto
 
   if (petArray.length > 1) {
