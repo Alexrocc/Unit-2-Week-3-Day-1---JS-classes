@@ -5,19 +5,22 @@ class User {
     this.age = age;
     this.location = location;
   }
-  static ageCompare(User1, User2) {
-    return User1.age < User2.age;
+  static ageCompare(user1, user2) {
+    if (user1.age > user2.age) {
+      console.log(`${User1.firstName} è più anziano di ${User2.firstName}`);
+    } else if (user1.age < user2.age) {
+      console.log(`${User2.firstName} è più anziano di ${User1.firstName}`);
+    } else {
+      console.log(
+        `${User1.firstName} e ${User2.firstName} hanno la stessa età`
+      );
+    }
   }
 }
 
-const User1 = new User("Mario", "Rossi", "35", "Palermo");
-const User2 = new User("Luigi", "Verdi", "27", "Roma");
-
-if (User.ageCompare(User1, User2) === false) {
-  console.log(`${User1.firstName} è più anziano di ${User2.firstName}`);
-} else if (User.ageCompare(User1, User2) === true) {
-  console.log(`${User2.firstName} è più anziano di ${User1.firstName}`);
-}
+const User1 = new User("Mario", "Rossi", 35, "Palermo");
+const User2 = new User("Luigi", "Verdi", 27, "Roma");
+User.ageCompare(User1, User2);
 
 const form = document.getElementById("pet-form");
 
